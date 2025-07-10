@@ -1,0 +1,65 @@
+{
+  "version": "1.0",
+  "description": "Configuration file for Claude Code session management deployment scripts",
+  "deployment": {
+    "default_structure": "auto",
+    "backup_by_default": true,
+    "global_prefix": "session"
+  },
+  "targets": {
+    "examples": [
+      {
+        "name": "Local Project",
+        "path": "../my-project",
+        "structure": "claude",
+        "backup": true
+      },
+      {
+        "name": "Legacy Project",
+        "path": "/path/to/legacy/project",
+        "structure": "standalone",
+        "backup": false
+      }
+    ]
+  },
+  "paths": {
+    "claude_structure": {
+      "commands": ".claude/commands",
+      "sessions": ".claude/sessions"
+    },
+    "standalone_structure": {
+      "commands": "commands",
+      "sessions": "sessions"
+    }
+  },
+  "commands": {
+    "session_commands": [
+      "session-start",
+      "session-end",
+      "session-list",
+      "session-current",
+      "session-update",
+      "session-help"
+    ],
+    "prefix_mapping": {
+      "session-start": "start",
+      "session-end": "end",
+      "session-list": "list",
+      "session-current": "current",
+      "session-update": "update",
+      "session-help": "help"
+    }
+  },
+  "validation": {
+    "required_files": [
+      "commands/session-start.md",
+      "commands/session-end.md",
+      "commands/session-list.md",
+      "commands/session-current.md",
+      "commands/session-update.md",
+      "commands/session-help.md"
+    ],
+    "check_permissions": true,
+    "create_missing_dirs": true
+  }
+}
